@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- ojdbc6.jar已经直接放到项目中,无需指定了,同时mysql驱动包也一样,这里同样无需指定 -->
+	<!-- <classPathEntry location="ojdbc6.jar" /> -->
+
+	<context id="MysqlTables" targetRuntime="MyBatis3">
+		<property name="suppressTypeWarnings" value="true" />
+		<!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+		<property name="javaFileEncoding" value="UTF-8" />
+		<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+			<property name="searchString" value="Example$" />
+			<property name="replaceString" value="Criteria" />
+		</plugin>
+		<plugin type="org.mybatis.generator.plugins.MySQLPaginationPlugin" />
+		<!-- 这里的type里写的是你的实现类的类全路径 -->
+		<commentGenerator type="org.mybatis.generator.internal.MyCommentGenerator">
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+			<property name="addRemarkComments" value="false" />
+		</commentGenerator>
+		<!-- mysql配置 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://172.16.8.35:3306/devrmdb" userId="devrm1c"
+			password="devrm1c">
+			<!-- 针对mysql数据库 -->
+			<property name="useInformationSchema" value="true"></property>
+		</jdbcConnection>
+
+
+		<javaTypeResolver
+			type="org.mybatis.generator.internal.types.JavaTypeResolver4ExtendImpl">
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- dto class -->
+		<javaModelGenerator targetPackage="com.x.crm.resources.dao.mapper.bo"
+			targetProject="E:\workspace_bonc_resource\x-resource\resources-center\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- mybatis xml file -->
+		<sqlMapGenerator targetPackage="mybatis.mapper.resources"
+			targetProject="E:\workspace_bonc_resource\x-resource\resources-center\src\main\resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- mapper class -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.x.crm.resources.dao.mapper.interfaces"
+			targetProject="E:\workspace_bonc_resource\x-resource\resources-center\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+
+<table tableName="RES_INPUT_DETAIL_T"  domainObjectName="ResInputDetail"  enableCountByExample="true"			enableUpdateByExample="true" enableDeleteByExample="true"			enableSelectByExample="true" selectByExampleQueryId="false" />
+<table tableName="RES_INPUT_INFO_T" domainObjectName="ResInputInfo"   enableCountByExample="true"			enableUpdateByExample="true" enableDeleteByExample="true"			enableSelectByExample="true" selectByExampleQueryId="false" />
+<table tableName="RES_OUTPUT_DETAIL_T" domainObjectName="ResOutputDetail"   enableCountByExample="true"			enableUpdateByExample="true" enableDeleteByExample="true"			enableSelectByExample="true" selectByExampleQueryId="false" />
+<table tableName="RES_OUTPUT_INFO_T" domainObjectName="ResOutputInfo"    enableCountByExample="true"			enableUpdateByExample="true" enableDeleteByExample="true"			enableSelectByExample="true" selectByExampleQueryId="false" />
+<table tableName="RES_SALE_DETAIL_T" domainObjectName="ResSaleDetail"   enableCountByExample="true"			enableUpdateByExample="true" enableDeleteByExample="true"			enableSelectByExample="true" selectByExampleQueryId="false" />
+<table tableName="RES_SALE_INFO_t"  domainObjectName="ResSaleInfo"  enableCountByExample="true"			enableUpdateByExample="true" enableDeleteByExample="true"			enableSelectByExample="true" selectByExampleQueryId="false" />
+<table tableName="RES_SCRAP_DETAIL_t" domainObjectName="ResScrapDetail"  enableCountByExample="true"			enableUpdateByExample="true" enableDeleteByExample="true"			enableSelectByExample="true" selectByExampleQueryId="false" />
+<table tableName="RES_SCRAP_INFO_T" domainObjectName="ResScrapInfo"  enableCountByExample="true"			enableUpdateByExample="true" enableDeleteByExample="true"			enableSelectByExample="true" selectByExampleQueryId="false" />
+<table tableName="RES_SCRAP_REASON_T" domainObjectName="ResScrapReason"    enableCountByExample="true"			enableUpdateByExample="true" enableDeleteByExample="true"			enableSelectByExample="true" selectByExampleQueryId="false" />
+<table tableName="RES_SOURCE_STORAGE_T"  domainObjectName="ResSourceStorage"   enableCountByExample="true"			enableUpdateByExample="true" enableDeleteByExample="true"			enableSelectByExample="true" selectByExampleQueryId="false" />
+<table tableName="RES_STORAGE_DETAIL_T" domainObjectName="ResStorageDetail"    enableCountByExample="true"			enableUpdateByExample="true" enableDeleteByExample="true"			enableSelectByExample="true" selectByExampleQueryId="false" />
+<table tableName="RES_TRANSFER_DETAIL_T" domainObjectName="ResTransferDetail"   enableCountByExample="true"			enableUpdateByExample="true" enableDeleteByExample="true"			enableSelectByExample="true" selectByExampleQueryId="false" />
+<table tableName="RES_TRANSFER_INFO_T"  domainObjectName="ResTransferInfo"     enableCountByExample="true"			enableUpdateByExample="true" enableDeleteByExample="true"			enableSelectByExample="true" selectByExampleQueryId="false" />
+
+
+	</context>
+</generatorConfiguration>

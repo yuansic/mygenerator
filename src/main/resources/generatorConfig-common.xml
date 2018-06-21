@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- ojdbc6.jar已经直接放到项目中,无需指定了,同时mysql驱动包也一样,这里同样无需指定 -->
+	<!-- <classPathEntry location="ojdbc6.jar" /> -->
+
+	<context id="MysqlTables" targetRuntime="MyBatis3">
+		<property name="suppressTypeWarnings" value="true" />
+		<!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+		<property name="javaFileEncoding" value="UTF-8" />
+		<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+			<property name="searchString" value="Example$" />
+			<property name="replaceString" value="Criteria" />
+		</plugin>
+		<plugin type="org.mybatis.generator.plugins.MySQLPaginationPlugin" />
+		<!-- 这里的type里写的是你的实现类的类全路径 -->
+		<commentGenerator type="org.mybatis.generator.internal.MyCommentGenerator">
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+			<property name="addRemarkComments" value="false" />
+		</commentGenerator>
+		<!-- mysql配置 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://172.16.8.28:3306/devcommondb" userId="devcommondb"
+			password="1234abcD">
+			<!-- 针对mysql数据库 -->
+			<property name="useInformationSchema" value="true"></property>
+		</jdbcConnection>
+
+
+		<javaTypeResolver
+			type="org.mybatis.generator.internal.types.JavaTypeResolver4ExtendImpl">
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- dto class -->
+		<javaModelGenerator targetPackage="com.x.common.dao.mapper.bo"
+			targetProject="E:\workspace_bonc_common\common\common-core\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- mybatis xml file -->
+		<sqlMapGenerator targetPackage="mybatis.mapper.common"
+			targetProject="E:\workspace_bonc_common\common\common-core\src\main\resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- mapper class -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.x.common.dao.mapper.interfaces"
+			targetProject="E:\workspace_bonc_common\common\common-core\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+
+		<table tableName="gn_sys_param" enableCountByExample="true"
+			enableUpdateByExample="true" enableDeleteByExample="true"
+			enableSelectByExample="true" selectByExampleQueryId="false" />
+
+	</context>
+</generatorConfiguration>

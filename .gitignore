@@ -1,0 +1,48 @@
+*.dat
+*.lock
+bin
+logs
+
+reports
+
+*.iml
+gradle-app.setting
+
+# maven #
+target
+
+# windows #
+Thumbs.db
+
+# Mac #
+.DS_Store
+
+# eclipse #
+.settings
+.project
+.classpath
+.log
+*.class
+
+# idea #
+.idea
+*.iml
+
+# Package Files #
+#*.jar
+#*.war
+#*.ear
+/target
+
+.gradle
+bin
+build
+
+.out
+tm.out*
+.dubbo
+*.epoch
+RuntimeInfo
+target
+hsf.lock
+classes
